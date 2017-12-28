@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tofly.youke.persistence.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.tofly.youke.domain.po.Student">
+        <id column="student_id" jdbcType="INTEGER" property="id"/>
+        <result column="student_name" jdbcType="VARCHAR" property="studentName"/>
+        <result column="student_no" jdbcType="VARCHAR" property="studentNo"/>
+        <result column="gender" jdbcType="CHAR" property="gender"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="country_code" jdbcType="VARCHAR" property="countryCode"/>
+        <result column="country_name" jdbcType="VARCHAR" property="countryName"/>
+        <result column="university_id" jdbcType="VARCHAR" property="universityId"/>
+        <result column="university_name" jdbcType="VARCHAR" property="universityName"/>
+        <result column="institute_id" jdbcType="VARCHAR" property="instituteId"/>
+        <result column="institute_name" jdbcType="VARCHAR" property="instituteName"/>
+        <result column="major_id" jdbcType="VARCHAR" property="majorId"/>
+        <result column="major_name" jdbcType="VARCHAR" property="majorName"/>
+    </resultMap>
+
+    <!-- 自定义接口 -->
+    <select id="findByObjParams" parameterType="Student" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM student s
+        WHERE s.country_code = #{countryCode}
+        <if test="countryName!=null">
+            AND s.country_name = #{countryName}
+        </if>
+        <if test="universityId!=null">
+            AND s.university_id = #{universityId}
+        </if>
+        <if test="universityName!=null">
+            AND s.university_name = #{universityName}
+        </if>
+        <if test="instituteId!=null">
+            AND s.institute_id = #{instituteId}
+        </if>
+        <if test="instituteName!=null">
+            AND s.institute_name = #{instituteName}
+        </if>
+        <if test="majorId!=null">
+            AND s.major_id = #{majorId}
+        </if>
+        <if test="majorName!=null">
+            AND s.major_name = #{majorName}
+        </if>
+        <if test="gender!=null">
+            AND s.gender = #{gender}
+        </if>
+        <if test="phone!=null">
+            AND s.phone = #{phone}
+        </if>
+        <if test="email!=null">
+            AND s.email = #{email}
+        </if>
+        <if test="idCard!=null">
+            AND s.id_card = #{idCard}
+        </if>
+        <if test="studentNo!=null">
+            AND s.student_no = #{studentNo}
+        </if>
+        <if test="studentName!=null">
+            AND s.student_name = #{studentName}
+        </if>
+    </select>
+
+    <sql id="Base_Column_List">
+    student_id, student_name, student_no, gender, id_card, email, phone, country_code, 
+    country_name, university_id, university_name, institute_id, institute_name, major_id, 
+    major_name
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from student
+        where student_id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where student_id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.tofly.youke.domain.po.Student">
+    insert into student (student_id, student_name, student_no, 
+      gender, id_card, email, 
+      phone, country_code, country_name, 
+      university_id, university_name, institute_id, 
+      institute_name, major_id, major_name
+      )
+    values (#{studentId,jdbcType=INTEGER}, #{studentName,jdbcType=VARCHAR}, #{studentNo,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=CHAR}, #{idCard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{countryName,jdbcType=VARCHAR}, 
+      #{universityId,jdbcType=VARCHAR}, #{universityName,jdbcType=VARCHAR}, #{instituteId,jdbcType=VARCHAR}, 
+      #{instituteName,jdbcType=VARCHAR}, #{majorId,jdbcType=VARCHAR}, #{majorName,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.tofly.youke.domain.po.Student">
+        insert into student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="studentId != null">
+                student_id,
+            </if>
+            <if test="studentName != null">
+                student_name,
+            </if>
+            <if test="studentNo != null">
+                student_no,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="idCard != null">
+                id_card,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="countryCode != null">
+                country_code,
+            </if>
+            <if test="countryName != null">
+                country_name,
+            </if>
+            <if test="universityId != null">
+                university_id,
+            </if>
+            <if test="universityName != null">
+                university_name,
+            </if>
+            <if test="instituteId != null">
+                institute_id,
+            </if>
+            <if test="instituteName != null">
+                institute_name,
+            </if>
+            <if test="majorId != null">
+                major_id,
+            </if>
+            <if test="majorName != null">
+                major_name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="studentId != null">
+                #{studentId,jdbcType=INTEGER},
+            </if>
+            <if test="studentName != null">
+                #{studentName,jdbcType=VARCHAR},
+            </if>
+            <if test="studentNo != null">
+                #{studentNo,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=CHAR},
+            </if>
+            <if test="idCard != null">
+                #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null">
+                #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryName != null">
+                #{countryName,jdbcType=VARCHAR},
+            </if>
+            <if test="universityId != null">
+                #{universityId,jdbcType=VARCHAR},
+            </if>
+            <if test="universityName != null">
+                #{universityName,jdbcType=VARCHAR},
+            </if>
+            <if test="instituteId != null">
+                #{instituteId,jdbcType=VARCHAR},
+            </if>
+            <if test="instituteName != null">
+                #{instituteName,jdbcType=VARCHAR},
+            </if>
+            <if test="majorId != null">
+                #{majorId,jdbcType=VARCHAR},
+            </if>
+            <if test="majorName != null">
+                #{majorName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tofly.youke.domain.po.Student">
+        update student
+        <set>
+            <if test="studentName != null">
+                student_name = #{studentName,jdbcType=VARCHAR},
+            </if>
+            <if test="studentNo != null">
+                student_no = #{studentNo,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=CHAR},
+            </if>
+            <if test="idCard != null">
+                id_card = #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null">
+                country_code = #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="countryName != null">
+                country_name = #{countryName,jdbcType=VARCHAR},
+            </if>
+            <if test="universityId != null">
+                university_id = #{universityId,jdbcType=VARCHAR},
+            </if>
+            <if test="universityName != null">
+                university_name = #{universityName,jdbcType=VARCHAR},
+            </if>
+            <if test="instituteId != null">
+                institute_id = #{instituteId,jdbcType=VARCHAR},
+            </if>
+            <if test="instituteName != null">
+                institute_name = #{instituteName,jdbcType=VARCHAR},
+            </if>
+            <if test="majorId != null">
+                major_id = #{majorId,jdbcType=VARCHAR},
+            </if>
+            <if test="majorName != null">
+                major_name = #{majorName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where student_id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tofly.youke.domain.po.Student">
+    update student
+    set student_name = #{studentName,jdbcType=VARCHAR},
+      student_no = #{studentNo,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      country_code = #{countryCode,jdbcType=VARCHAR},
+      country_name = #{countryName,jdbcType=VARCHAR},
+      university_id = #{universityId,jdbcType=VARCHAR},
+      university_name = #{universityName,jdbcType=VARCHAR},
+      institute_id = #{instituteId,jdbcType=VARCHAR},
+      institute_name = #{instituteName,jdbcType=VARCHAR},
+      major_id = #{majorId,jdbcType=VARCHAR},
+      major_name = #{majorName,jdbcType=VARCHAR}
+    where student_id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>

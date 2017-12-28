@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tofly.youke.persistence.SysRoleResourceMapper">
+  <resultMap id="BaseResultMap" type="com.tofly.youke.domain.po.SysRoleResource">
+    <id column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <id column="resource_id" jdbcType="VARCHAR" property="resourceId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.tofly.youke.domain.po.SysRoleResource">
+    delete from sys_role_resource
+    where role_id = #{roleId,jdbcType=VARCHAR}
+      and resource_id = #{resourceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tofly.youke.domain.po.SysRoleResource">
+    insert into sys_role_resource (role_id, resource_id)
+    values (#{roleId,jdbcType=VARCHAR}, #{resourceId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tofly.youke.domain.po.SysRoleResource">
+    insert into sys_role_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

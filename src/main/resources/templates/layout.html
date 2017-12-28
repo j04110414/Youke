@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="renderer" content="webkit"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta name="description" content=""></meta>
+    <meta name="author" content=""></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+    <meta http-equiv="x-pjax-version" th:content="${X_PJAX_VERSION}"/>
+    <meta name="context-path" th:content="${application.basePath}"/>
+    <link rel="icon" href="/img/icon.ico" type="image/x-icon"/>
+    <title>让收藏更简单</title>
+
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          name="viewport"/>
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap/less/tooltip.less}"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/plugins/font-awesome/css/font-awesome.min.css}"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" th:href="@{/plugins/Ionicons/css/ionicons.min.css}"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" th:href="@{/css/base.css}"/>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" th:href="@{/css/skins/skin-blue.css}">
+    <!-- Date Picker -->
+    <link rel="stylesheet"
+          th:href="@{/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css}"/>
+    <!-- Daterange picker -->
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-daterangepicker/daterangepicker.css}"/>
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css}"/>
+    <!-- Nprogress -->
+    <link rel="stylesheet" th:href="@{/plugins/nprogress/nprogress.css}"></link>
+    <!-- dataTables -->
+    <link rel="stylesheet" th:href="@{/plugins/datatables/css/dataTables.bootstrap.min.css}"></link>
+    <!-- buttons -->
+    <link rel="stylesheet" th:href="@{/css/buttons.css}"/>
+    <!-- sweetalert -->
+    <link rel="stylesheet" th:href="@{/plugins/sweetalert/sweetalert.css}"/>
+    <!-- treeTable-->
+    <link rel="stylesheet" th:href="@{/plugins/jquery-treetable/css/jquery.treetable.css}"/>
+    <link rel="stylesheet"
+          th:href="@{/plugins/jquery-treetable/css/jquery.treetable.theme.default.css}"/>
+    <!-- zTree-->
+    <link rel="stylesheet" th:href="@{/plugins/zTree_v3/css/metroStyle/metroStyle.css}"/>
+    <!-- iCheck-->
+    <link rel="stylesheet" th:href="@{/plugins/iCheck/all.css}"/>
+
+    <!-- jQuery 3 -->
+    <script th:src="@{/plugins/jquery/dist/jquery.min.js}"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script th:src="@{/plugins/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <script th:src="@{/plugins/bootstrap/js/tooltip.js}"></script>
+    <!-- FastClick -->
+    <script th:src="@{/plugins/fastclick/lib/fastclick.js}"></script>
+    <!-- AdminLTE App -->
+    <script th:src="@{/js/adminlte.js}"></script>
+    <!-- SlimScroll -->
+    <script th:src="@{/plugins/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+    <!-- ChartJS -->
+    <script th:src="@{/plugins/Chart.js/Chart.js}"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script th:src="@{/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
+    <!-- Pjax App -->
+    <script th:src="@{/js/jquery.pjax.js}"></script>
+    <!-- Nprogress -->
+    <script th:src="@{/plugins/nprogress/nprogress.js}"></script>
+    <!-- dataTables -->
+    <script th:src="@{/plugins/datatables/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/plugins/datatables/js/dataTables.bootstrap.min.js}"></script>
+    <!-- handlebars -->
+    <script th:src="@{/js/handlebars-v4.0.10.js}"></script>
+    <!-- sweetalert -->
+    <script th:src="@{/plugins/sweetalert/sweetalert.min.js}"></script>
+    <!-- jquery validate-->
+    <script th:src="@{/plugins/jquery-validation-1.17.0/dist/jquery.validate.min.js}"></script>
+    <script th:src="@{/plugins/jquery-validation-1.17.0/dist/localization/messages_zh.js}"></script>
+    <!-- treeTable-->
+    <script th:src="@{/plugins/jquery-treetable/jquery.treetable.js}"></script>
+    <!-- zTree-->
+    <script th:src="@{/plugins/zTree_v3/js/jquery.ztree.all.min.js}"></script>
+    <!-- iCheck-->
+    <script th:src="@{/plugins/iCheck/icheck.min.js}"></script>
+
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!--<script th:src="${urls.getForLookupPath('/js/base.js')}"></script>-->
+    <script th:src="@{/js/base.js}"></script>
+
+    <script>
+
+        var baseContextPath = $('meta[name=context-path]').attr("content");
+
+    </script>
+
+
+</head>
+
+<body class="layout-fixed skin-blue sidebar-mini wysihtml5-supported"
+      style="height: auto; min-height: 100%;">
+<div th:fragment="navbar" class="wrapper" role="navigation" style="height: auto; min-height: 100%;">
+    <div th:replace="fragments/header :: header">Header</div>
+    <div th:replace="fragments/left :: left">left</div>
+    <div layout:fragment="content" id="pjax-container"></div>
+    <div th:replace="fragments/footer :: footer">footer</div>
+</div>
+<div th:replace="fragments/alert :: alert">alert</div>
+</body>
+</html>

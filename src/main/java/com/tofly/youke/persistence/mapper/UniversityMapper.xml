@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tofly.youke.persistence.UniversityMapper">
+    <resultMap id="BaseResultMap" type="com.tofly.youke.domain.po.University">
+        <id column="university_id" jdbcType="INTEGER" property="universityId"/>
+        <result column="university_name" jdbcType="VARCHAR" property="universityName"/>
+        <result column="university_code" jdbcType="VARCHAR" property="universityCode"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="university_feature" jdbcType="CHAR" property="universityFeature"/>
+        <result column="university_type" jdbcType="VARCHAR" property="universityType"/>
+        <result column="education_level" jdbcType="VARCHAR" property="educationLevel"/>
+        <result column="category" jdbcType="VARCHAR" property="category"/>
+        <result column="membership_type" jdbcType="VARCHAR" property="membershipType"/>
+        <result column="membership" jdbcType="VARCHAR" property="membership"/>
+        <result column="graduate_school" jdbcType="VARCHAR" property="graduateSchool"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="website" jdbcType="VARCHAR" property="website"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    university_id, university_name, university_code, country, province, city, university_feature, 
+    university_type, education_level, category, membership_type, membership, graduate_school, 
+    address, phone, website
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from university
+        where university_id = #{universityId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from university
+    where university_id = #{universityId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.tofly.youke.domain.po.University">
+    insert into university (university_id, university_name, university_code, 
+      country, province, city, 
+      university_feature, university_type, education_level, 
+      category, membership_type, membership, 
+      graduate_school, address, phone, 
+      website)
+    values (#{universityId,jdbcType=INTEGER}, #{universityName,jdbcType=VARCHAR}, #{universityCode,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{universityFeature,jdbcType=CHAR}, #{universityType,jdbcType=VARCHAR}, #{educationLevel,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{membershipType,jdbcType=VARCHAR}, #{membership,jdbcType=VARCHAR}, 
+      #{graduateSchool,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.tofly.youke.domain.po.University">
+        insert into university
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="universityId != null">
+                university_id,
+            </if>
+            <if test="universityName != null">
+                university_name,
+            </if>
+            <if test="universityCode != null">
+                university_code,
+            </if>
+            <if test="country != null">
+                country,
+            </if>
+            <if test="province != null">
+                province,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="universityFeature != null">
+                university_feature,
+            </if>
+            <if test="universityType != null">
+                university_type,
+            </if>
+            <if test="educationLevel != null">
+                education_level,
+            </if>
+            <if test="category != null">
+                category,
+            </if>
+            <if test="membershipType != null">
+                membership_type,
+            </if>
+            <if test="membership != null">
+                membership,
+            </if>
+            <if test="graduateSchool != null">
+                graduate_school,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="website != null">
+                website,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="universityId != null">
+                #{universityId,jdbcType=INTEGER},
+            </if>
+            <if test="universityName != null">
+                #{universityName,jdbcType=VARCHAR},
+            </if>
+            <if test="universityCode != null">
+                #{universityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null">
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="universityFeature != null">
+                #{universityFeature,jdbcType=CHAR},
+            </if>
+            <if test="universityType != null">
+                #{universityType,jdbcType=VARCHAR},
+            </if>
+            <if test="educationLevel != null">
+                #{educationLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="category != null">
+                #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="membershipType != null">
+                #{membershipType,jdbcType=VARCHAR},
+            </if>
+            <if test="membership != null">
+                #{membership,jdbcType=VARCHAR},
+            </if>
+            <if test="graduateSchool != null">
+                #{graduateSchool,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="website != null">
+                #{website,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.tofly.youke.domain.po.University">
+        update university
+        <set>
+            <if test="universityName != null">
+                university_name = #{universityName,jdbcType=VARCHAR},
+            </if>
+            <if test="universityCode != null">
+                university_code = #{universityCode,jdbcType=VARCHAR},
+            </if>
+            <if test="country != null">
+                country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                province = #{province,jdbcType=VARCHAR},
+            </if>
+            <if test="city != null">
+                city = #{city,jdbcType=VARCHAR},
+            </if>
+            <if test="universityFeature != null">
+                university_feature = #{universityFeature,jdbcType=CHAR},
+            </if>
+            <if test="universityType != null">
+                university_type = #{universityType,jdbcType=VARCHAR},
+            </if>
+            <if test="educationLevel != null">
+                education_level = #{educationLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="category != null">
+                category = #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="membershipType != null">
+                membership_type = #{membershipType,jdbcType=VARCHAR},
+            </if>
+            <if test="membership != null">
+                membership = #{membership,jdbcType=VARCHAR},
+            </if>
+            <if test="graduateSchool != null">
+                graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="website != null">
+                website = #{website,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where university_id = #{universityId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.tofly.youke.domain.po.University">
+    update university
+    set university_name = #{universityName,jdbcType=VARCHAR},
+      university_code = #{universityCode,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      university_feature = #{universityFeature,jdbcType=CHAR},
+      university_type = #{universityType,jdbcType=VARCHAR},
+      education_level = #{educationLevel,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      membership_type = #{membershipType,jdbcType=VARCHAR},
+      membership = #{membership,jdbcType=VARCHAR},
+      graduate_school = #{graduateSchool,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR}
+    where university_id = #{universityId,jdbcType=INTEGER}
+  </update>
+
+    <select id="getUniversityKeyValue" parameterType="com.tofly.youke.domain.po.University"
+            resultType="com.tofly.youke.common.domain.KeyValueModel">
+        SELECT
+        university_name AS value,
+        university_id AS key
+        FROM
+        university u
+        WHERE u.country = #{country}
+        <if test="province != null">
+            AND u.province= #{province}
+        </if>
+        <if test="city != null">
+            AND u.city = #{city}
+        </if>
+    </select>
+</mapper>

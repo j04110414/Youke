@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tofly.youke.persistence.TeacherMapper">
+  <resultMap id="BaseResultMap" type="com.tofly.youke.domain.po.Teacher">
+    <id column="teacher_id" jdbcType="INTEGER" property="teacherId" />
+    <result column="teacher_name" jdbcType="VARCHAR" property="teacherName" />
+    <result column="teacher_type" jdbcType="VARCHAR" property="teacherType" />
+    <result column="teacher_no" jdbcType="VARCHAR" property="teacherNo" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="university_id" jdbcType="VARCHAR" property="universityId" />
+    <result column="institute_id" jdbcType="VARCHAR" property="instituteId" />
+    <result column="major_id" jdbcType="VARCHAR" property="majorId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    teacher_id, teacher_name, teacher_type, teacher_no, english_name, university_id, 
+    institute_id, major_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from teacher
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tofly.youke.domain.po.Teacher">
+    insert into teacher (teacher_id, teacher_name, teacher_type, 
+      teacher_no, english_name, university_id, 
+      institute_id, major_id)
+    values (#{teacherId,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, #{teacherType,jdbcType=VARCHAR}, 
+      #{teacherNo,jdbcType=VARCHAR}, #{englishName,jdbcType=VARCHAR}, #{universityId,jdbcType=VARCHAR}, 
+      #{instituteId,jdbcType=VARCHAR}, #{majorId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tofly.youke.domain.po.Teacher">
+    insert into teacher
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="teacherId != null">
+        teacher_id,
+      </if>
+      <if test="teacherName != null">
+        teacher_name,
+      </if>
+      <if test="teacherType != null">
+        teacher_type,
+      </if>
+      <if test="teacherNo != null">
+        teacher_no,
+      </if>
+      <if test="englishName != null">
+        english_name,
+      </if>
+      <if test="universityId != null">
+        university_id,
+      </if>
+      <if test="instituteId != null">
+        institute_id,
+      </if>
+      <if test="majorId != null">
+        major_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+      <if test="teacherName != null">
+        #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherType != null">
+        #{teacherType,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherNo != null">
+        #{teacherNo,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null">
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="universityId != null">
+        #{universityId,jdbcType=VARCHAR},
+      </if>
+      <if test="instituteId != null">
+        #{instituteId,jdbcType=VARCHAR},
+      </if>
+      <if test="majorId != null">
+        #{majorId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tofly.youke.domain.po.Teacher">
+    update teacher
+    <set>
+      <if test="teacherName != null">
+        teacher_name = #{teacherName,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherType != null">
+        teacher_type = #{teacherType,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherNo != null">
+        teacher_no = #{teacherNo,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null">
+        english_name = #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="universityId != null">
+        university_id = #{universityId,jdbcType=VARCHAR},
+      </if>
+      <if test="instituteId != null">
+        institute_id = #{instituteId,jdbcType=VARCHAR},
+      </if>
+      <if test="majorId != null">
+        major_id = #{majorId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tofly.youke.domain.po.Teacher">
+    update teacher
+    set teacher_name = #{teacherName,jdbcType=VARCHAR},
+      teacher_type = #{teacherType,jdbcType=VARCHAR},
+      teacher_no = #{teacherNo,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      university_id = #{universityId,jdbcType=VARCHAR},
+      institute_id = #{instituteId,jdbcType=VARCHAR},
+      major_id = #{majorId,jdbcType=VARCHAR}
+    where teacher_id = #{teacherId,jdbcType=INTEGER}
+  </update>
+</mapper>

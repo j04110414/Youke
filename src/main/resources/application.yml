@@ -1,0 +1,62 @@
+#
+#server:
+#  port: 8081
+#  context-path: /youke
+#  tomcat:
+#    uri-encoding: UTF-8
+##    basedir: @tomcat.basedir@
+#    max-threads: 800
+#
+#    accesslog:
+#      enabled: true
+#      request-attributes-enabled: true
+#  session:
+#    timeout: 1
+#
+#session:
+#  timeout: 30
+#
+#spring:
+#  http:
+#    encoding:
+#      enabled: true
+#      force: true
+#      charset: UTF-8
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    url: jdbc:mysql://192.168.1.67:3306/youke?useUnicode=true&characterEncoding=utf-8
+#    username: root
+#    password: 123456
+#    hikari:
+#      connection-test-query: SELECT 1 FROM DUAL
+#      minimum-idle: 1
+#      maximum-pool-size: 50
+#      auto-commit: true
+#      idle-timeout: 10000
+#      read-only: false
+#      connection-timeout: 10000
+#      max-lifetime: 1800000
+#
+#
+#mybatis:
+#  mapper-locations: classpath*:com/tofly/youke/persistence/mapper/*Mapper.xml
+#  type-aliases-package: com.tofly.youke.domain
+#  configuration:
+#    # 使全局的映射器启用或禁用缓存。
+#    cache-enabled: false
+#    # 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。
+#    lazy-loading-enabled: true
+#    # 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载。
+#    aggressive-lazy-loading: false
+#    # 允许JDBC支持生成的键。
+#    use-generated-keys: false
+#    # 当sql查询回结果为null，返回对象为Map时，允许key存在。
+#    call-setters-on-nulls: true
+#    # 允许MyBatis根据驼峰规则将数据库字段自动映射至Bean。
+#    map-underscore-to-camel-case: true
+#
+#
+#
+#
+#
