@@ -3,12 +3,10 @@ package com.tofly.youke.common.domain;
 /**
  * Desc: 响应错误类型<br/>
  *
- * @author: Summer
+ * @author: lyrics
  * @version: 1.0
- * @date: 2016/10/14 10:24
- * @since: JDK 1.8
- * <p>
- * History:2016/10/14 Summer 初始创建
+ * @date: 2018/1/2 10:24
+ * @since: JDK 1.8 <p> History:2018/1/2 lyrics 初始创建
  */
 public enum ERROR_TYPE {
 

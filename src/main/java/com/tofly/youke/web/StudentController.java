@@ -3,21 +3,22 @@ package com.tofly.youke.web;
 import com.github.pagehelper.Page;
 import com.tofly.youke.common.domain.BackResult;
 import com.tofly.youke.common.domain.RESPONSE_CODE;
-import com.tofly.youke.common.exception.ServiceException;
 import com.tofly.youke.common.utils.DataTablesPager;
 import com.tofly.youke.common.utils.PageUtils;
+import com.tofly.youke.common.utils.VerifyAndHintUtil;
 import com.tofly.youke.domain.po.Student;
 import com.tofly.youke.service.StudentService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -29,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class StudentController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
 
     @Autowired
     private StudentService studentService;
@@ -47,9 +49,6 @@ public class StudentController {
     @RequestMapping(value = "/student/form", method = RequestMethod.GET)
     public String studentFormPage(Model model, HttpServletRequest request) {
 
-        System.out.println(request.getRequestURI() + "?" + request.getQueryString());
-
-
         String studentId = request.getParameter("id");
         Student student = new Student();
         if (StringUtils.hasText(studentId)) {
@@ -67,7 +66,7 @@ public class StudentController {
      */
     @RequestMapping(value = "/students", method = RequestMethod.POST)
     @ResponseBody
-    public DataTablesPager<List<Student>> list(HttpServletRequest request) throws ServiceException {
+    public DataTablesPager<List<Student>> list(HttpServletRequest request) {
         BackResult<List<Student>> result = new BackResult<>();
         result.setCode(RESPONSE_CODE.BACK_CODE_FAIL.value);
 
@@ -93,7 +92,7 @@ public class StudentController {
 
             result.setCode(RESPONSE_CODE.BACK_CODE_SUCCESS.value);
         } catch (Exception e) {
-            throw new ServiceException("查询学生列表信息失败");
+            LOGGER.error("查询学生列表信息失败");
         }
 
         return dataTablesPager;
@@ -104,7 +103,7 @@ public class StudentController {
      */
     @RequestMapping(value = "/student/save", method = RequestMethod.POST)
     @ResponseBody
-    public BackResult<String> save(@Validated Student student) throws ServiceException {
+    public BackResult<String> saveStudent(@Validated Student student) {
         BackResult<String> result = new BackResult<>();
         result.setCode(RESPONSE_CODE.BACK_CODE_FAIL.value);
 
@@ -118,7 +117,25 @@ public class StudentController {
             }
             result.setCode(RESPONSE_CODE.BACK_CODE_SUCCESS.value);
         } catch (Exception e) {
-            throw new ServiceException("新增学生信息失败");
+            LOGGER.error("新增学生信息失败");
+        }
+
+        return result;
+    }
+
+
+    @RequestMapping(value = "/student/delete/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public BackResult<String> deleteStudent(@PathVariable("id") String id) {
+        BackResult<String> result = new BackResult<>();
+        result.setCode(RESPONSE_CODE.BACK_CODE_FAIL.value);
+
+        try {
+            VerifyAndHintUtil.checkNull(id, "学生id不能为空");
+            studentService.updateStuDelFlag(id);
+            result.setCode(RESPONSE_CODE.BACK_CODE_SUCCESS.value);
+        } catch (Exception e) {
+            LOGGER.error("删除学生信息失败");
         }
 
         return result;

@@ -32,6 +32,8 @@ public class Student extends BaseDomain {
 
     private String majorName;
 
+    private String delFlag;
+
     public String getStudentName() {
         return studentName;
     }
@@ -150,7 +152,6 @@ public class Student extends BaseDomain {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", studentName=").append(studentName);
         sb.append(", studentNo=").append(studentNo);
         sb.append(", gender=").append(gender);
@@ -165,6 +166,7 @@ public class Student extends BaseDomain {
         sb.append(", instituteName=").append(instituteName);
         sb.append(", majorId=").append(majorId);
         sb.append(", majorName=").append(majorName);
+        sb.append(", delFlag=").append(delFlag);
         sb.append("]");
         return sb.toString();
     }
