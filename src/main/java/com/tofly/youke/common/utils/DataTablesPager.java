@@ -4,7 +4,9 @@ import com.tofly.youke.common.domain.BackResult;
 
 /**
  * DataTablesPager分页对象
- * Created by cremin on 2017/8/9.
+ *
+ * @author cremin
+ * @date 2017/8/9
  */
 public class DataTablesPager<T> extends BackResult {
 

@@ -1,13 +1,16 @@
 package com.tofly.youke;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 /**
- * Created by lyrics on 2017-11-17.
+ *
+ * @author lyrics
+ * @date 2017-11-17
  */
 @SpringBootApplication
+@ImportResource("classpath:application-extend.xml")
 public class Application {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);

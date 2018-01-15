@@ -11,13 +11,17 @@ public class Teacher extends BaseDomain {
 
     private String teacherNo;
 
+    private String gender;
+
+    private String birthday;
+
+    private String imgUrl;
+
     private String englishName;
 
     private String universityId;
 
     private String instituteId;
-
-    private String majorId;
 
     public Integer getTeacherId() {
         return teacherId;
@@ -51,6 +55,30 @@ public class Teacher extends BaseDomain {
         this.teacherNo = teacherNo == null ? null : teacherNo.trim();
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender == null ? null : gender.trim();
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday == null ? null : birthday.trim();
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+    }
+
     public String getEnglishName() {
         return englishName;
     }
@@ -75,14 +103,6 @@ public class Teacher extends BaseDomain {
         this.instituteId = instituteId == null ? null : instituteId.trim();
     }
 
-    public String getMajorId() {
-        return majorId;
-    }
-
-    public void setMajorId(String majorId) {
-        this.majorId = majorId == null ? null : majorId.trim();
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -93,10 +113,12 @@ public class Teacher extends BaseDomain {
         sb.append(", teacherName=").append(teacherName);
         sb.append(", teacherType=").append(teacherType);
         sb.append(", teacherNo=").append(teacherNo);
+        sb.append(", gender=").append(gender);
+        sb.append(", birthday=").append(birthday);
+        sb.append(", imgUrl=").append(imgUrl);
         sb.append(", englishName=").append(englishName);
         sb.append(", universityId=").append(universityId);
         sb.append(", instituteId=").append(instituteId);
-        sb.append(", majorId=").append(majorId);
         sb.append("]");
         return sb.toString();
     }

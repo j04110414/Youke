@@ -23,7 +23,7 @@ public class DruidConfiguration {
      * @return
      */
     @Bean
-    public ServletRegistrationBean DruidStatViewServlet() {
+    public ServletRegistrationBean druidStatViewServlet() {
 
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Desc: 基础实体<br/>
  *
- * @Author: Summer
+ * @author dell
  * @date: 2016/8/17 15:16
  * <p>
  * History:2016/8/17 Summer 初始创建

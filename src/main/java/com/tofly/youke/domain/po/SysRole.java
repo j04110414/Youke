@@ -1,10 +1,10 @@
 package com.tofly.youke.domain.po;
 
 import com.tofly.youke.common.domain.BaseDomain;
+
 import java.util.Date;
 
 public class SysRole extends BaseDomain {
-    private String id;
 
     private String name;
 
@@ -21,16 +21,6 @@ public class SysRole extends BaseDomain {
     private Date updateDate;
 
     private String remarks;
-
-    private String delFlag;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
 
     public String getName() {
         return name;
@@ -96,14 +86,6 @@ public class SysRole extends BaseDomain {
         this.remarks = remarks == null ? null : remarks.trim();
     }
 
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag == null ? null : delFlag.trim();
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -119,7 +101,6 @@ public class SysRole extends BaseDomain {
         sb.append(", updateBy=").append(updateBy);
         sb.append(", updateDate=").append(updateDate);
         sb.append(", remarks=").append(remarks);
-        sb.append(", delFlag=").append(delFlag);
         sb.append("]");
         return sb.toString();
     }

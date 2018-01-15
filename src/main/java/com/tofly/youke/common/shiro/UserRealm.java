@@ -4,7 +4,7 @@ package com.tofly.youke.common.shiro;
 import com.tofly.youke.domain.po.SysUser;
 import com.tofly.youke.service.system.ResourceService;
 import com.tofly.youke.service.system.RoleService;
-import com.tofly.youke.service.system.UserService;
+import com.tofly.youke.service.UserService;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

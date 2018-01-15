@@ -2,6 +2,9 @@ package com.tofly.youke.domain.po;
 
 import com.tofly.youke.common.domain.BaseDomain;
 
+/**
+ * @author dell
+ */
 public class University extends BaseDomain {
     private Integer universityId;
 

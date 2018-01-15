@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author dell
+ */
 public class DateUtils {
     private static Logger logger = LoggerFactory.getLogger(DateUtils.class);
 
@@ -526,8 +529,8 @@ public class DateUtils {
         long time1 = cal.getTimeInMillis();
         cal.setTime(sdf.parse(bdate));
         long time2 = cal.getTimeInMillis();
-        long between_days = (time2 - time1) / (1000 * 3600 * 24);
+        long betweenDays = (time2 - time1) / (1000 * 3600 * 24);
 
-        return Integer.parseInt(String.valueOf(between_days));
+        return Integer.parseInt(String.valueOf(betweenDays));
     }
 }

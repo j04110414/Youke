@@ -1,6 +1,7 @@
 package com.tofly.youke.domain.po;
 
 import com.tofly.youke.common.domain.BaseDomain;
+
 import java.util.Date;
 
 public class SysUser extends BaseDomain {
@@ -43,8 +44,6 @@ public class SysUser extends BaseDomain {
     private String updateBy;
 
     private Date updateDate;
-
-    private String delFlag;
 
     public String getCompanyId() {
         return companyId;
@@ -198,14 +197,6 @@ public class SysUser extends BaseDomain {
         this.updateDate = updateDate;
     }
 
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag == null ? null : delFlag.trim();
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -232,7 +223,6 @@ public class SysUser extends BaseDomain {
         sb.append(", createDate=").append(createDate);
         sb.append(", updateBy=").append(updateBy);
         sb.append(", updateDate=").append(updateDate);
-        sb.append(", delFlag=").append(delFlag);
         sb.append("]");
         return sb.toString();
     }

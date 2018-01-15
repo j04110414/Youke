@@ -7,6 +7,8 @@ import com.tofly.youke.common.exception.ServiceException;
 import com.tofly.youke.domain.po.University;
 import com.tofly.youke.service.UniversityService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +19,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by lyrics on 2017-11-17.
+ *
+ * @author lyrics
+ * @date 2017-11-17
  */
 @Controller
 public class UniversityController {
+    private static final Logger logger = LoggerFactory.getLogger(UniversityController.class);
 
     @Autowired
     private UniversityService universityService;

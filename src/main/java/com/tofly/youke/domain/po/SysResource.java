@@ -4,7 +4,6 @@ import com.tofly.youke.common.domain.BaseDomain;
 import java.util.Date;
 
 public class SysResource extends BaseDomain {
-    private String id;
 
     private String parentId;
 
@@ -34,13 +33,6 @@ public class SysResource extends BaseDomain {
 
     private String delFlag;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
 
     public String getParentId() {
         return parentId;
@@ -146,13 +138,6 @@ public class SysResource extends BaseDomain {
         this.remarks = remarks == null ? null : remarks.trim();
     }
 
-    public String getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(String delFlag) {
-        this.delFlag = delFlag == null ? null : delFlag.trim();
-    }
 
     @Override
     public String toString() {

@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by cremin on 2017/8/7.
+ *
+ * @author cremin
+ * @date 2017/8/7
  */
 public class PjaxInterceptor extends HandlerInterceptorAdapter {
 
@@ -30,6 +32,7 @@ public class PjaxInterceptor extends HandlerInterceptorAdapter {
      * @param modelAndView
      * @throws Exception
      */
+    @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 
         if (modelAndView != null) {
