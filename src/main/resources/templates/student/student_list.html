@@ -12,7 +12,7 @@
             <div class="btn-group dataTables-row-operator">
                 <a title="编辑" data-pjax=""  href="{{editUrl}}" type="button"><i class="fa fa-edit"></i></a>
                 <a title="删除"  type="button" href="#" onclick="youke.studentList.delRow('{{id}}')" ><i class="fa fa-trash-o"></i></a>
-                <a title="指定角色"  type="button" href="#" onclick="youke.studentList.assignRolesModal('{{id}}','{{username}}')" ><i class="fa fa-user-o"></i></a>
+                <!--<a title="指定角色"  type="button" href="#" onclick="youke.studentList.assignRolesModal('{{id}}','{{username}}')" ><i class="fa fa-user-o"></i></a>-->
             </div>
         </script>
 
@@ -47,10 +47,15 @@
                     <form class="form-inline" id="queryForm">
                         <div class="form-group">
                             <label>地区</label>
+<<<<<<< HEAD
                             <select id="code" class="form-control">
                                 <option value="">未选择</option>
                                 <option value="10001">北京</option>
                                 <option value="10003">清华大学</option>
+=======
+                            <select id="area" class="form-control">
+                                <option value="">未选择</option>
+>>>>>>> 370c2b47f7e4ecb767396b42d418cfa889e3ebfd
                             </select>
                         </div>
                         <div class="form-group">

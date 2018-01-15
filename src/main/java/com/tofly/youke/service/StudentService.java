@@ -23,4 +23,7 @@ public class StudentService extends AbstractService<Student> {
     }
 
 
+    public void updateStuDelFlag(String id) {
+        studentMapper.updateStuDelFlag(id);
+    }
 }
