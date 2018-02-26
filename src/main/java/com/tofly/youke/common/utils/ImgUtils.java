@@ -37,7 +37,7 @@ public class ImgUtils {
      */
     private static String folderForUpload = "";
 
-    private static final UploadClient client;
+    private static  UploadClient client;
 
     static {
         MediaConfiguration configuration = new MediaConfiguration();

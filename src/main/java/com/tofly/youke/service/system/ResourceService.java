@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by lyrics on 2017-12-21.
+ *
+ * @author lyrics
+ * @date 2017-12-21
  */
 @Service
 public class ResourceService extends AbstractService<SysResource> {

@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by lyrics on 2017-12-22.
+ *
+ * @author lyrics
+ * @date 2017-12-22
  */
 @Service
 public class StudentService extends AbstractService<Student> {

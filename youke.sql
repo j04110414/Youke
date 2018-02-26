@@ -10,9 +10,31 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- 导出 youke 的数据库结构
-CREATE DATABASE IF NOT EXISTS `youke` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `youke`;
+-- 导出  表 youke.appuser 结构
+CREATE TABLE IF NOT EXISTS `appuser` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '/**app用户id**/',
+  `user_type` char(2) NOT NULL COMMENT '/**用户类型:0学生，1老师**/',
+  `nick_name` varchar(200) DEFAULT NULL COMMENT '/**昵称**/',
+  `gender` char(2) DEFAULT NULL COMMENT '/**性别:0女，1男**/',
+  `phone` varchar(15) NOT NULL COMMENT '/**手机**/',
+  `email` varchar(50) DEFAULT NULL COMMENT '/**邮箱**/',
+  `img_url` varchar(50) DEFAULT NULL COMMENT '/**头像**/',
+  `birthday` varchar(50) DEFAULT NULL COMMENT '/**出生日期**/',
+  `remark` varchar(50) DEFAULT NULL COMMENT '/**备注**/',
+  `password` varchar(120) NOT NULL COMMENT '/**登录密码**/',
+  `status` varchar(2) NOT NULL DEFAULT '0' COMMENT '/**状态：0正常**/',
+  `create_time` datetime DEFAULT NULL COMMENT '/**创建时间**/',
+  `update_time` datetime DEFAULT NULL COMMENT '/**更新时间**/',
+  `operate_user` varchar(45) DEFAULT NULL COMMENT '/**操作人**/',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='app用户登录表';
+
+-- 正在导出表  youke.appuser 的数据：~1 rows (大约)
+DELETE FROM `appuser`;
+/*!40000 ALTER TABLE `appuser` DISABLE KEYS */;
+INSERT INTO `appuser` (`user_id`, `user_type`, `nick_name`, `gender`, `phone`, `email`, `img_url`, `birthday`, `remark`, `password`, `status`, `create_time`, `update_time`, `operate_user`) VALUES
+	(1, '0', 'lyrics', '1', '13888888888', 'jjj@126.com', NULL, NULL, NULL, '123456', '0', '2018-01-10 14:52:33', '2018-01-10 14:52:35', NULL);
+/*!40000 ALTER TABLE `appuser` ENABLE KEYS */;
 
 
 -- 导出  表 youke.country 结构
@@ -41,6 +63,8 @@ CREATE TABLE IF NOT EXISTS `course` (
   `course_id` int(11) DEFAULT NULL COMMENT '课程id',
   `course_name` varchar(50) DEFAULT NULL COMMENT '课程名称',
   `course_code` varchar(8) DEFAULT NULL COMMENT '课程代号',
+  `img_url` varchar(32) DEFAULT NULL COMMENT '课程封面',
+  `description` varchar(32) DEFAULT NULL COMMENT '课程描述',
   `teacher_id` varchar(8) DEFAULT NULL COMMENT '代课老师id',
   `course_location` varchar(8) DEFAULT NULL COMMENT '上课地点',
   `course_day` varchar(8) DEFAULT NULL COMMENT '上课天',
@@ -107,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `nation` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `code` (`code`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3924 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3924 DEFAULT CHARSET=utf8 COMMENT='地区';
 
 -- 正在导出表  youke.nation 的数据：~3,923 rows (大约)
 DELETE FROM `nation`;
@@ -4044,7 +4068,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `student_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '学生ID',
   `student_name` varchar(16) DEFAULT NULL COMMENT '学生名称',
   `student_no` varchar(16) DEFAULT NULL COMMENT '学号',
-  `gender` char(2) DEFAULT NULL COMMENT '性别',
+  `gender` char(1) DEFAULT NULL COMMENT '性别，0女，1男',
   `id_card` varchar(32) DEFAULT NULL COMMENT '身份证号',
   `email` varchar(32) DEFAULT NULL COMMENT '邮箱',
   `phone` varchar(32) DEFAULT NULL COMMENT '电话号码',
@@ -4056,16 +4080,17 @@ CREATE TABLE IF NOT EXISTS `student` (
   `institute_name` varchar(32) DEFAULT NULL COMMENT '学院名称',
   `major_id` varchar(32) DEFAULT NULL COMMENT '专业ID',
   `major_name` varchar(32) DEFAULT NULL COMMENT '专业名称',
+  `del_flag` char(1) NOT NULL DEFAULT '0' COMMENT '删除标志，0正常，1删除',
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='学生表';
 
 -- 正在导出表  youke.student 的数据：~3 rows (大约)
 DELETE FROM `student`;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` (`student_id`, `student_name`, `student_no`, `gender`, `id_card`, `email`, `phone`, `country_code`, `country_name`, `university_id`, `university_name`, `institute_id`, `institute_name`, `major_id`, `major_name`) VALUES
-	(1, '陈汐', '07110414', 'm', '610265198507081230', '111@126.com', '13888888888', 'CHN', NULL, NULL, NULL, '', NULL, NULL, NULL),
-	(2, '毛泽东', '17141204', 'm', '610522198212081320', 'mao@126.com', '13888888888', 'CHN', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-	(3, '习近平', '04110412', 'm', '610525193011021025', 'xi@126.com', '18888888888', 'CHN', '中国', '', '未选择', '', '未选择', '', '未选择');
+INSERT INTO `student` (`student_id`, `student_name`, `student_no`, `gender`, `id_card`, `email`, `phone`, `country_code`, `country_name`, `university_id`, `university_name`, `institute_id`, `institute_name`, `major_id`, `major_name`, `del_flag`) VALUES
+	(1, '陈汐', '07110414', '1', '610265198507081230', '111@126.com', '13888888888', 'CHN', NULL, NULL, NULL, '', NULL, NULL, NULL, '0'),
+	(2, '毛泽东', '17141204', '1', '610522198212081320', 'mao@126.com', '13888888888', 'CHN', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0'),
+	(3, '习近平', '04110412', '1', '610525193011021025', 'xi@126.com', '18888888888', 'CHN', '中国', '', '未选择', '', '未选择', '', '未选择', '0');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 
 
@@ -4230,10 +4255,12 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `teacher_name` varchar(32) DEFAULT NULL COMMENT '老师名称',
   `teacher_type` varchar(8) DEFAULT NULL COMMENT '代课类别',
   `teacher_no` varchar(8) DEFAULT NULL COMMENT '老师工号',
+  `gender` varchar(8) DEFAULT NULL COMMENT '老师性别',
+  `birthday` varchar(8) DEFAULT NULL COMMENT '出生年月',
+  `img_url` varchar(255) DEFAULT NULL COMMENT '头像地址',
   `english_name` varchar(8) DEFAULT NULL COMMENT '英文名',
   `university_id` varchar(8) DEFAULT NULL COMMENT '所在院校id',
   `institute_id` varchar(8) DEFAULT NULL COMMENT '学院ID',
-  `major_id` varchar(8) DEFAULT NULL COMMENT '专业id',
   PRIMARY KEY (`teacher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='老师表';
 

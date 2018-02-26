@@ -3,6 +3,10 @@ package com.tofly.youke.domain.po;
 import com.tofly.youke.common.domain.BaseDomain;
 import java.util.Date;
 
+/**
+ *
+ * @author lyrics
+ */
 public class SysResource extends BaseDomain {
 
     private String parentId;

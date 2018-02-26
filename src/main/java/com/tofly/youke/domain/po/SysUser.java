@@ -4,6 +4,9 @@ import com.tofly.youke.common.domain.BaseDomain;
 
 import java.util.Date;
 
+/**
+ * @author lyrics
+ */
 public class SysUser extends BaseDomain {
     private String id;
 

@@ -8,7 +8,9 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by lyrics on 2017-12-28.
+ *
+ * @author lyrics
+ * @date 2017-12-28
  */
 public class PageUtils {
     /**

@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * druid 配置.
+ * @author lyrics
  */
 
 @Configuration

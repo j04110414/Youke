@@ -2,6 +2,9 @@ package com.tofly.youke.domain.po;
 
 import com.tofly.youke.common.domain.BaseDomain;
 
+/**
+ * @author lyrics
+ */
 public class Student extends BaseDomain {
 
     private String studentName;

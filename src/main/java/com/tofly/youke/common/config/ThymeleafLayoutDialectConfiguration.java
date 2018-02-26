@@ -7,7 +7,9 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
 
 /**
- * Created by cremin on 2017/8/4.
+ *
+ * @author cremin
+ * @date 2017/8/4
  */
 @Configuration
 public class ThymeleafLayoutDialectConfiguration {

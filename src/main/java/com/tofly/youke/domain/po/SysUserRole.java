@@ -2,6 +2,9 @@ package com.tofly.youke.domain.po;
 
 import com.tofly.youke.common.domain.BaseDomain;
 
+/**
+ * @author lyrics
+ */
 public class SysUserRole extends BaseDomain {
     private String userId;
 

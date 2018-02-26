@@ -31,11 +31,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 public class StudentController {
-<<<<<<< HEAD
     private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
-=======
-    private static final Logger LOGGER = LoggerFactory.getLogger(StudentController.class);
->>>>>>> 370c2b47f7e4ecb767396b42d418cfa889e3ebfd
 
     @Autowired
     private StudentService studentService;
@@ -97,7 +93,7 @@ public class StudentController {
 
             result.setCode(RESPONSE_CODE.BACK_CODE_SUCCESS.value);
         } catch (Exception e) {
-            LOGGER.error("查询学生列表信息失败");
+            logger.error("查询学生列表信息失败");
         }
 
         return dataTablesPager;
@@ -122,7 +118,7 @@ public class StudentController {
             }
             result.setCode(RESPONSE_CODE.BACK_CODE_SUCCESS.value);
         } catch (Exception e) {
-            LOGGER.error("新增学生信息失败");
+            logger.error("新增学生信息失败");
         }
 
         return result;
@@ -140,7 +136,7 @@ public class StudentController {
             studentService.updateStuDelFlag(id);
             result.setCode(RESPONSE_CODE.BACK_CODE_SUCCESS.value);
         } catch (Exception e) {
-            LOGGER.error("删除学生信息失败");
+            logger.error("删除学生信息失败");
         }
 
         return result;

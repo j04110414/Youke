@@ -6,6 +6,9 @@ import com.tofly.youke.domain.po.University;
 
 import java.util.List;
 
+/**
+ * @author lyrics
+ */
 public interface UniversityMapper extends IMapper<University> {
 
     List<KeyValueModel> getUniversityKeyValue(University university);

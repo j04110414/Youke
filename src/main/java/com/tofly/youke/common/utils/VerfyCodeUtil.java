@@ -91,7 +91,7 @@ public class VerfyCodeUtil {
         graphics2D.setColor(Color.BLACK);
 
         // 画认证码,每个认证码在不同的水平位置
-        String itemOut[] = new String[outString.length()];
+        String[] itemOut = new String[outString.length()];
         for (int i = 0; i < itemOut.length; i++) {
             itemOut[i] = outString.substring(i, i + 1);
             int w = 0;

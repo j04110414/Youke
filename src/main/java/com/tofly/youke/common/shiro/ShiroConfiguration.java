@@ -22,6 +22,7 @@ import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 /**
  * shiro 配置.
+ * @author dell
  */
 
 @Configuration

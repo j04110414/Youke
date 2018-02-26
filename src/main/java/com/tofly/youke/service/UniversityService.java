@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by lyrics on 2017-11-17.
+ *
+ * @author lyrics
+ * @date 2017-11-17
  */
 @Service
 public class UniversityService extends AbstractService<University> {

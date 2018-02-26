@@ -2,7 +2,7 @@ package com.tofly.youke.web.system;
 
 import com.tofly.youke.common.constants.GlobalConstant;
 import com.tofly.youke.domain.po.SysUser;
-import com.tofly.youke.service.UserService;
+import com.tofly.youke.service.system.UserService;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2017-12-20
  */
 @Controller
-//@RequestMapping(value = "/sys")
 public class LoginController {
 
     @Autowired

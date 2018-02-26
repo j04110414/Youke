@@ -4,7 +4,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by lyrics on 2017-11-17.
+ *
+ * @author lyrics
+ * @date 2017-11-17
  */
 @Configuration
 @MapperScan("com.tofly.youke.persistence")
